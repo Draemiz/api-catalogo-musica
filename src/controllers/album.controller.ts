@@ -2,11 +2,11 @@ import {type Request, type Response} from "express";
 import prisma from "../database/prisma.js";
 
 export const crearAlbum = async (req:Request, res:Response) =>{
-    const {titulo, artista, anio}=req.body;
+    const {titulo, artista, anio, generoId}=req.body;
     try{
         const album = await prisma.album.create({
           data:{
-            titulo, artista, anio,
+            titulo, artista, anio, generoId,
           }  
         })
         res.status(201).json(album)

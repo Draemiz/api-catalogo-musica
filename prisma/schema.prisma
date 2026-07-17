@@ -17,6 +17,10 @@ id Int @id @default(autoincrement())
 titulo String
 artista String
 anio Int
+
+generoId Int
+genero Genero  @relation(fields:[generoId], references:[id], onDelete: Cascade)
+
 canciones Cancion[] 
 }
 
@@ -26,4 +30,12 @@ titulo String
 duracion Int
 albumId Int
 album Album @relation(fields: [albumId], references: [id], onDelete: Cascade)
+}
+
+
+model Genero{
+  id Int @id @default(autoincrement())
+  nombre String
+
+  allbum Album[]
 }
